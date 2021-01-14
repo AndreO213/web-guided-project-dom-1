@@ -2,19 +2,32 @@
 //  Older: getElementById, getElementsByTagName, getElementsByClassName
 //  Newer: querySelector, querySelectorAll
 //  Select the following single elements from the div.card
+// querySelector and querySelectorAll both use CSS SELECTORS
+// NodeList is an array like object
+// uses bracket notation to access alements, can use .length
+// can also use .forEach() (CANNOT USE .MAP OR .REDUCE ETC.)
 
 // A- finding across the entire DOM
-const header = null
-const logoTitle = null
-const firstCard = null
+const header = document.querySelector('header');
+//console.log('header', header)
+const logoTitle = document.querySelector('#logoTitle')
+// console.log('logoTitle', logoTitle)
+// const logoTitle = document.querySelector('.header')
+
+const firstCard = document.querySelector('.card')
+// console.log('card', firstCard)
+const dog = document.querySelector('.dog')
+console.log('dog', dog)
 // B- finding within one particular element
-const imageFirstCard = null
-const titleFirstCard = null
-const subtitleFirstCard = null
-const textFirstCard = null
+const imageFirstCard = firstCard.querySelector('img')
+console.log('img', imageFirstCard)
+const titleFirstCard = firstCard.querySelector('.card-title')
+const subtitleFirstCard = firstCard.querySelector('.card-subtitle')
+const textFirstCard = firstCard.querySelector('.card-text')
 // C- traversing with dot notation
-const link1FirstCard = null
-const link2FirstCard = null
+const link1FirstCard = textFirstCard.nextElementSibling;
+console.log('linkFirstCard', link1FirstCard)
+const link2FirstCard = link1FirstCard.nextElementSibling;
 
 
 // 👉 2- Finding collections of elements in the DOM
@@ -22,12 +35,29 @@ const link2FirstCard = null
 // B- Loop over the links and console.log their text content
 // C- Turn the collection of links into a real array
 // D- Use .filter to find the anchor tag with the textContent of "Home"
+const allAnchors = document.querySelectorAll('.menu-item')
+// console.log('allAnchors', allAnchors)
 
+function printElem(elem) {
+    console.log(elem.textContent)
+}
+allAnchors.forEach(printElem);
+
+// function findHome(elem) {
+//     if (elem.textContent === 'Home') {
+//         return elem
+//     }
+// }
+
+// const anchorsRealArray = Array.from(allAnchors)
+// anchorsRealArray.filter(findHome)
 
 // 👉 3- Changing an element's text content
 //  A- Change the cat-related content into dog-related content
-//  B- Have the students research online the difference between textContent and innerText
+imageFirstCard.src = "https://www.google.com/imgres?imgurl=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F1108099%2Fpexels-photo-1108099.jpeg%3Fauto%3Dcompress%26cs%3Dtinysrgb%26dpr%3D1%26w%3D500&imgrefurl=https%3A%2F%2Fwww.pexels.com%2Fsearch%2Fdog%2F&tbnid=gM3Cz7MsHS_tAM&vet=12ahUKEwicwv-uiZjuAhWHgZ4KHRi0CnMQMygAegUIARCkAg..i&docid=NzcFCDirz3vE7M&w=500&h=375&q=dog%20photos&ved=2ahUKEwicwv-uiZjuAhWHgZ4KHRi0CnMQMygAegUIARCkAg"
 
+//  B- Have the students research online the difference between textContent and innerText
+titleFirstCard.textContent = 'Dogs Are Great'
 
 // 👉 4- Changing any property
 //  A- Using dot notation to change a few attributes
